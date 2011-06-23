@@ -394,6 +394,13 @@ DC++ client for LeechCraft.
 This package contains EiskaltDC++ DirectConnect client ported to
 LeechCraft.
 
+%package advancednotifications
+Summary:        LeechCraft DC++ Module
+Requires:       %{name} = %{version}
+
+%description advancednotifications
+Advanced Notifications module for more customizable notifications for Leechcraft
+
 %prep
 %setup -q -n %{name}-%{version}-285-ga29292b
 
@@ -411,6 +418,7 @@ cd build
   -DENABLE_POPISHU=True \
   -DENABLE_AZOTH=True \
   -DENABLE_EISKALTDCPP=True \
+  -DENABLE_ADVANCEDNOTIFICATIONS=True \
   ../src  
 
 make %{?_smp_mflags}
@@ -647,6 +655,10 @@ desktop-file-install                                    \
 %_libdir/%{name}/plugins/*%{name}_vgrabber.so
 %_datadir/%{name}/translations/%{name}_vgrabber*.qm
 %_datadir/%{name}/settings/vgrabbersettings.xml
+
+%files advancednotifications
+%defattr(-,root,root)
+%{_libdir}/%{name}/plugins/*%{name}_advancednotifications.so
 
 %changelog
 * Mon Jun 06 2011 Minh Ngo <nlminhtl@gmail.com> - 0.4.75-0.1.gitga29292b
