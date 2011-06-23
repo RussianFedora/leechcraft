@@ -254,7 +254,16 @@ Flash video replacer for Web browser for LeechCraft.
 This package contains a plugin for the Poshuku web browser that
 replaces default flash-based video players on some sites with any
 suitable LeechCraft's media player thus avoiding the need for Flash.
+
+
+%package poshuku-pintab
+Summary:        LeechCraft Pintab Module
+Requires:       %{name} = %{version}
+Requires:       %{name}-poshuku = %{version}
  
+%description poshuku-pintab
+Poshuku PinTab allows to pin selected Poshuku tabs so that they cannot be closed until unpinned.
+
 %package poshuku-onlinebookmarks
 Summary:        LeechCraft Online Bookmarks Module
 Requires:       %{name} = %{version}
@@ -485,6 +494,10 @@ desktop-file-install                                    \
 %lang(uk) %{_datadir}/%{name}/translations/uk/LC_MESSAGES/libeiskaltdcpp.mo
 %{_libdir}/%{name}/plugins/*%{name}_eiskaltdcpp.so
 %doc %{_mandir}/man1/eiskaltdcpp-qt.1.gz
+
+%files poshuku-pintab
+%defattr(-,root,root,-)
+%_libdir/%{name}/plugins/*_poshuku_pintab.so
 
 %files aggregator
 %defattr(-,root,root,-)
