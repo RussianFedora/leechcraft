@@ -26,6 +26,8 @@ BuildRequires:  qxmpp >= 0.3.44
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  rb_libtorrent-devel >= 0.15.6
+BuildRequires:  gettext-devel
+
 
 %description
 Core executable of Leechcraft
