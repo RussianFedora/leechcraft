@@ -25,7 +25,9 @@ BuildRequires:  bzip2-devel
 BuildRequires:  qxmpp >= 0.3.44
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
+%if 0%{?fedora} == 15
 BuildRequires:  rb_libtorrent-devel >= 0.15.6
+%endif
 BuildRequires:  gettext-devel
 
 
@@ -346,7 +348,8 @@ by plugins for this plugin.
 %package secman-simplestorage
 Summary:        LeechCraft Simple Storage Module
 Requires:       %{name} = %{version}
- 
+Requires:       %{name}-secman = %{version}
+
 %description secman-simplestorage
 Simple storage backend for SecMan.
  
@@ -386,7 +389,8 @@ BuildArch:      noarch
 Iconset based on the Tango project for LeechCraft.
  
 This package contains mapping to the Tango project icons.
- 
+
+%if 0%{?fedora} == 15
 %package bittorrent
 Summary:    BitTorrent, the BitTorrent client
 Requires:   %{name} = %{version}
@@ -394,6 +398,7 @@ Requires:   rb_libtorrent-devel >= 0.15.6
 
 %description bittorrent
 BitTorrent, the BitTorrent client for LeechCraft.
+%endif
 
 %package eiskaltdcpp
 Summary:        LeechCraft DC++ Module
@@ -423,7 +428,9 @@ cd build
 %{cmake} \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DLEECHCRAFT_VERSION="0.4.75" \
-  -DENABLE_TORRENT=True \
+%if 0%{?fedora} < 15
+  -DENABLE_TORRENT=False \
+%endif
   -DRESPECTLIB64=True \
   -DENABLE_SECMAN=True \
   -DENABLE_POPISHU=True \
@@ -471,11 +478,13 @@ desktop-file-install                                    \
 %_libdir/*plugininterface.so.*
 %_libdir/*xmlsettingsdialog.so.*
 
+%if 0%{?fedora} == 15
 %files  bittorrent
 %defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_bittorrent.so
 %{_datadir}/%{name}/settings/torrentsettings.xml
 %{_datadir}/%{name}/translations/%{name}_bittorrent_*.qm
+%endif
 
 %files  eiskaltdcpp
 %defattr(-,root,root)
