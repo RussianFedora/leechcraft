@@ -1,7 +1,7 @@
 Name:           leechcraft 
 Summary:        A free open source cross-platform modular internet-client 
 Version:        0.4.75
-Release:        0.1.gitga29292b%{?dist}
+Release:        0.1.gitga29292b%{?dist}.R
 License:        GPLv2+
 Group:          Applications/Internet
 Url:            http://leechcraft.org
