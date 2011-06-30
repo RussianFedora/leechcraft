@@ -1,7 +1,7 @@
 Name:           leechcraft 
 Summary:        A free open source cross-platform modular internet-client 
 Version:        0.4.75
-Release:        0.1.gitga29292b%{?dist}.R
+Release:        0.2.gitga29292b%{?dist}.R
 License:        GPLv2+
 Group:          Applications/Internet
 Url:            http://leechcraft.org
@@ -9,7 +9,6 @@ Source:         http://netcologne.dl.sourceforge.net/project/leechcraft/LeechCra
 Source1:        %{name}.desktop
 
 Requires:       %{name}-iconset
-Requires:       %{name}-devel
 
 BuildRequires:  cmake
 BuildRequires:  libcurl-devel
@@ -59,6 +58,7 @@ LeechCraft.
 %package aggregator
 Summary:        LeechCraft Aggregator Module
 Requires:       %{name} = %{version}
+Requires:       %{name}-cstp = %{version}
  
 %description aggregator
 RSS/Atom feed reader for LeechCraft.
@@ -204,16 +204,14 @@ features:
  
 %package poshuku-fatape
 Summary:        LeechCraft Greasemonkey Module
-Requires:       %{name} = %{version}
-Requires:       %{name}-poshuku
+Requires:       %{name}-poshuku = %{version}
  
 %description poshuku-fatape
 Greasemonkey scripts for leechcraft-poshuku.
  
 %package poshuku-cleanweb
 Summary:        LeechCraft Ad Filter Module
-Requires:       %{name} = %{version}
-Requires:       %{name}-poshuku
+Requires:       %{name}-poshuku = %{version}
  
 %description poshuku-cleanweb
 Ad filter for Web browser for LeechCraft.
@@ -226,7 +224,6 @@ button.
  
 %package poshuku-filescheme
 Summary:        LeechCraft Schemes Module
-Requires:       %{name} = %{version}
 Requires:       %{name}-poshuku = %{version}
  
 %description poshuku-filescheme
@@ -237,7 +234,6 @@ it to handle file:// schemes.
  
 %package poshuku-fua
 Summary:        LeechCraft User Agent Module
-Requires:       %{name} = %{version}
 Requires:       %{name}-poshuku = %{version}
  
 %description poshuku-fua
@@ -249,7 +245,6 @@ regexps.
  
 %package poshuku-wyfv
 Summary:        LeechCraft Flash Video Replacer Module
-Requires:       %{name} = %{version}
 Requires:       %{name}-poshuku = %{version}
  
 %description poshuku-wyfv
@@ -262,7 +257,6 @@ suitable LeechCraft's media player thus avoiding the need for Flash.
 
 %package poshuku-pintab
 Summary:        LeechCraft Pintab Module
-Requires:       %{name} = %{version}
 Requires:       %{name}-poshuku = %{version}
  
 %description poshuku-pintab
@@ -270,7 +264,6 @@ Poshuku PinTab allows to pin selected Poshuku tabs so that they cannot be closed
 
 %package poshuku-onlinebookmarks
 Summary:        LeechCraft Online Bookmarks Module
-Requires:       %{name} = %{version}
 Requires:       %{name}-poshuku = %{version}
  
 %description poshuku-onlinebookmarks
@@ -359,12 +352,96 @@ SecMan, LeechCraft's security manager plugin.
 %package azoth
 Summary:        LeechCraft Messenger Module
 Requires:       %{name} = %{version}
-Requires:       qxmpp >= 0.3.44
-
-%description azoth
-XMPP, IRC messenger for LeechCraft.
  
-This package contains a simple XMPP messenger for LeechCraft.
+%description azoth
+IM client for LeechCraft.
+ 
+This package contains a simple IM client for LeechCraft.
+ 
+%package azoth-acetamine
+Summary:        IRC support for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-acetamine
+This package contains a IRC support for LeechCraft Azoth Module.
+ 
+%package azoth-chathistory
+Summary:        Chat history for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-chathistory
+This package contains a chat history module for LeechCraft Azoth
+Module.
+ 
+%package azoth-autopaste
+Summary:        Autopaste for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-autopaste
+This package contains an autopaste for automatic pasting of long
+messages to pastebins
+ 
+%package azoth-embedmedia
+Summary:        Media objects for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-embedmedia
+This package enables embedding different media objects in chat
+tab for LeechCraft Azoth Module.
+ 
+%package azoth-hili
+Summary:        Conference highlights for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-hili
+This package contains a plugin for customizing conference highlights
+for LeechCraft Azoth Module.
+ 
+%package azoth-juick
+Summary:         Juick.com service for LeechCraft Azoth Module
+Requires:        %{name}-azoth = %{version}
+ 
+%description azoth-juick
+This package contains a plugin for the juick.com microblogging service
+for LeechCraft Azoth Module.
+ 
+%package azoth-nativeemoticons
+Summary:         Emoticons packs for LeechCraft Azoth Module
+Requires:        %{name}-azoth = %{version}
+ 
+%description azoth-nativeemoticons
+This package contains a plugin for supporting emoticons packs in LeechCraft
+Azoth Module.
+ 
+%package azoth-p100q
+Summary:         Psto.net service for LeechCraft Azoth Module
+Requires:        %{name}-azoth = %{version}
+ 
+%description azoth-p100q
+This package contains a plugin for the psto.net microblogging service
+for LeechCraft Azoth Module.
+ 
+%package azoth-standardstyles
+Summary:         Standard styles for LeechCraft Azoth Module
+Requires:        %{name}-azoth = %{version}
+ 
+%description azoth-standardstyles
+This package provides standard styles for LeechCraft Azoth Module.
+ 
+%package azoth-xoox
+Summary:         XMPP support for LeechCraft Azoth Module
+Requires:        %{name}-azoth = %{version}
+ 
+%description azoth-xoox
+This package contains a XMPP support for LeechCraft Azoth Module.
+ 
+%package azoth-xtazy
+Summary:         Publishing current user tune for LeechCraft Azoth Module
+Requires:        %{name}-azoth = %{version}
+ 
+%description azoth-xtazy
+This package contains a plugin for publishing current user tune for
+LeechCraft Azoth Module.
  
 %package iconset-oxygen
 Summary:        LeechCraft Oxygen Iconset
@@ -520,14 +597,69 @@ desktop-file-install                                    \
 %defattr(-,root,root,-)
 %_libdir/%{name}/plugins/lib%{name}_auscrie.so
 %_datadir/%{name}/translations/%{name}_auscrie_*.qm
-
+ 
 %files azoth
-%defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_azoth*.so
-%_datadir/%{name}/translations/%{name}_azoth*.qm
-%_datadir/%{name}/settings/azoth*.xml
-%_datadir/%{name}/azoth/
-
+%defattr(-,root,root)
+%{_datadir}/%{name}/azoth
+%{_datadir}/%{name}/settings/azothsettings.xml
+%{_datadir}/%{name}/translations/%{name}_azoth_en.qm
+%{_datadir}/%{name}/translations/%{name}_azoth_??_??.qm
+%{_libdir}/%{name}/plugins/*%{name}_azoth.so
+ 
+%files azoth-acetamine
+%defattr(-,root,root)
+%{_datadir}/%{name}/settings/azothacetamidesettings.xml
+%{_datadir}/%{name}/translations/%{name}_azoth_acetamide*
+%{_libdir}/%{name}/plugins/*%{name}_azoth_acetamide.so
+ 
+%files azoth-autopaste
+%defattr(-,root,root)
+%{_datadir}/%{name}/settings/azothautopastesettings.xml
+%{_datadir}/%{name}/translations/%{name}_azoth_autopaste*
+%{_libdir}/%{name}/plugins/*%{name}_azoth_autopaste.so
+ 
+%files azoth-chathistory
+%defattr(-,root,root)
+%{_datadir}/%{name}/translations/%{name}_azoth_chathistory*
+%{_libdir}/%{name}/plugins/*%{name}_azoth_chathistory.so
+ 
+%files azoth-embedmedia
+%defattr(-,root,root)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_embedmedia.so
+ 
+%files azoth-hili
+%defattr(-,root,root)
+%{_datadir}/%{name}/settings/azothhilisettings.xml
+%{_datadir}/%{name}/translations/%{name}_azoth_hili*
+%{_libdir}/%{name}/plugins/*%{name}_azoth_hili.so
+ 
+%files azoth-juick
+%defattr(-,root,root)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_juick.so
+ 
+%files azoth-nativeemoticons
+%defattr(-,root,root)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_nativeemoticons.so
+ 
+%files azoth-p100q
+%defattr(-,root,root)
+%{_datadir}/%{name}/settings/azothp100qsettings.xml
+%{_libdir}/%{name}/plugins/*%{name}_azoth_p100q.so
+ 
+%files azoth-standardstyles
+%defattr(-,root,root)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_standardstyles.so
+ 
+%files azoth-xoox
+%defattr(-,root,root)
+%{_datadir}/%{name}/translations/%{name}_azoth_xoox*
+%{_libdir}/%{name}/plugins/*%{name}_azoth_xoox.so
+ 
+%files azoth-xtazy
+%defattr(-,root,root)
+%{_datadir}/%{name}/settings/azothxtazysettings.xml
+%{_libdir}/%{name}/plugins/*%{name}_azoth_xtazy.so
+ 
 %files cstp
 %defattr(-,root,root,-)
 %_libdir/%{name}/plugins/*leechcraft_cstp.so
