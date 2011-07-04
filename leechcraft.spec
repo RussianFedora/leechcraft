@@ -28,7 +28,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  rb_libtorrent-devel >= 0.15.6
 %endif
 BuildRequires:  gettext-devel
-
+BuildRequires:  speex-devel
 
 %description
 Core executable of Leechcraft
