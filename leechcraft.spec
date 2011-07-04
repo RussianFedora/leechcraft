@@ -1,11 +1,11 @@
 Name:           leechcraft 
 Summary:        A free open source cross-platform modular internet-client 
-Version:        0.4.75
-Release:        0.2.gitga29292b%{?dist}.R
+Version:        0.4.80
+Release:        0.1%{?dist}.R
 License:        GPLv2+
 Group:          Applications/Internet
 Url:            http://leechcraft.org
-Source:         http://netcologne.dl.sourceforge.net/project/leechcraft/LeechCraft/snapshots/leechcraft-0.4.75-285-ga29292b.tar.bz2
+Source:         http://netcologne.dl.sourceforge.net/project/%{name}/LeechCraft/snapshots/%{name}-%{version}.tar.bz2
 Source1:        %{name}.desktop
 
 Requires:       %{name}-iconset
@@ -442,6 +442,27 @@ Requires:        %{name}-azoth = %{version}
 %description azoth-xtazy
 This package contains a plugin for publishing current user tune for
 LeechCraft Azoth Module.
+
+%package azoth-depester
+Summary:         LeechCraft Azoth Module for ignoring unwanted participants
+Requires:        %{name}-azoth = %{version}
+ 
+%description azoth-depester
+This package contains LeechCraft Azoth Module for ignoring unwanted participants.
+ 
+%package azoth-herbicide
+Summary:         Antispam plugin for LeechCraft Azoth Module
+Requires:        %{name}-azoth = %{version}
+ 
+%description azoth-herbicide
+This package contains a basic antispam plugin for LeechCraft Azoth Module.
+ 
+%package azoth-rosenthal
+Summary:         Spell checker plugin for LeechCraft Azoth Module
+Requires:        %{name}-azoth = %{version}
+ 
+%description azoth-rosenthal
+This package contains  a spell checker plugin for LeechCraft Azoth Module
  
 %package iconset-oxygen
 Summary:        LeechCraft Oxygen Iconset
@@ -495,7 +516,7 @@ Requires:       %{name} = %{version}
 Advanced Notifications module for more customizable notifications for Leechcraft
 
 %prep
-%setup -q -n %{name}-%{version}-285-ga29292b
+%setup -q -n %{name}-%{version}
 
 mkdir build 
 
@@ -504,7 +525,7 @@ cd build
 
 %{cmake} \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DLEECHCRAFT_VERSION="0.4.75" \
+  -DLEECHCRAFT_VERSION="%{version}" \
 %if 0%{?fedora} < 15
   -DENABLE_TORRENT=False \
 %endif
@@ -659,6 +680,23 @@ desktop-file-install                                    \
 %defattr(-,root,root)
 %{_datadir}/%{name}/settings/azothxtazysettings.xml
 %{_libdir}/%{name}/plugins/*%{name}_azoth_xtazy.so
+
+%files azoth-depester
+%defattr(-,root,root)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_depester.so
+%{_datadir}/%{name}/translations/%{name}_azoth_depester*
+ 
+%files azoth-herbicide
+%defattr(-,root,root)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_herbicide.so
+%{_datadir}/%{name}/translations/%{name}_azoth_herbicide*
+%{_datadir}/%{name}/settings/azothherbicidesettings.xml
+ 
+%files azoth-rosenthal
+%defattr(-,root,root)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_herbicide.so
+%{_datadir}/%{name}/translations/%{name}_azoth_rosenthal*
+%{_datadir}/%{name}/settings/azothrosenthalsettings.xml
  
 %files cstp
 %defattr(-,root,root,-)
@@ -817,5 +855,10 @@ desktop-file-install                                    \
 %{_libdir}/%{name}/plugins/*%{name}_advancednotifications.so
 
 %changelog
+* Mon Jul 04 2011 Minh Ngo <nlminhtl@gmail.com> - 0.4.80-0.1
+- 0.4.80 release
+- azoth depester plugin
+- azoth herbicide plugin
+- azoth rosenthal plugin
 * Mon Jun 06 2011 Minh Ngo <nlminhtl@gmail.com> - 0.4.75-0.1.gitga29292b
 - initial build 
