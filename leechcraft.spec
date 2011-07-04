@@ -271,7 +271,15 @@ Online bookmarks plugin for LeechCraft.
  
 This package contains a plugin for the Poshuku web browser that allows
 to synchronize bookmarks with services like Read It Later.
- 
+
+%package poshuku-keywords
+Summary:        Support of url keywords for LeechCraft Poshuku browser
+Requires:       %{name}-poshuku = %{version}
+
+%description poshuku-keywords
+This package contains a plugin for supporting url keywords for LeechCraft
+Poshuku browser
+
 %package seekthru
 Summary:        LeechCraft OpenSearch Module
 Requires:       %{name} = %{version}
@@ -620,7 +628,7 @@ desktop-file-install                                    \
 %_datadir/%{name}/translations/%{name}_auscrie_*.qm
  
 %files azoth
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_datadir}/%{name}/azoth
 %{_datadir}/%{name}/settings/azothsettings.xml
 %{_datadir}/%{name}/translations/%{name}_azoth_en.qm
@@ -628,73 +636,74 @@ desktop-file-install                                    \
 %{_libdir}/%{name}/plugins/*%{name}_azoth.so
  
 %files azoth-acetamine
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_datadir}/%{name}/settings/azothacetamidesettings.xml
 %{_datadir}/%{name}/translations/%{name}_azoth_acetamide*
 %{_libdir}/%{name}/plugins/*%{name}_azoth_acetamide.so
  
 %files azoth-autopaste
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_datadir}/%{name}/settings/azothautopastesettings.xml
 %{_datadir}/%{name}/translations/%{name}_azoth_autopaste*
 %{_libdir}/%{name}/plugins/*%{name}_azoth_autopaste.so
  
 %files azoth-chathistory
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_datadir}/%{name}/translations/%{name}_azoth_chathistory*
 %{_libdir}/%{name}/plugins/*%{name}_azoth_chathistory.so
  
 %files azoth-embedmedia
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_azoth_embedmedia.so
  
 %files azoth-hili
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_datadir}/%{name}/settings/azothhilisettings.xml
 %{_datadir}/%{name}/translations/%{name}_azoth_hili*
 %{_libdir}/%{name}/plugins/*%{name}_azoth_hili.so
  
 %files azoth-juick
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_azoth_juick.so
  
 %files azoth-nativeemoticons
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_azoth_nativeemoticons.so
  
 %files azoth-p100q
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_datadir}/%{name}/settings/azothp100qsettings.xml
 %{_libdir}/%{name}/plugins/*%{name}_azoth_p100q.so
  
 %files azoth-standardstyles
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_azoth_standardstyles.so
  
 %files azoth-xoox
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_datadir}/%{name}/translations/%{name}_azoth_xoox*
 %{_libdir}/%{name}/plugins/*%{name}_azoth_xoox.so
  
 %files azoth-xtazy
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_datadir}/%{name}/settings/azothxtazysettings.xml
 %{_libdir}/%{name}/plugins/*%{name}_azoth_xtazy.so
+%{_datadir}/%{name}/translations/%{name}_azoth_xtazy*
 
 %files azoth-depester
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_azoth_depester.so
 %{_datadir}/%{name}/translations/%{name}_azoth_depester*
  
 %files azoth-herbicide
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_azoth_herbicide.so
 %{_datadir}/%{name}/translations/%{name}_azoth_herbicide*
 %{_datadir}/%{name}/settings/azothherbicidesettings.xml
  
 %files azoth-rosenthal
-%defattr(-,root,root)
-%{_libdir}/%{name}/plugins/*%{name}_azoth_herbicide.so
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_rosenthal.so
 %{_datadir}/%{name}/translations/%{name}_azoth_rosenthal*
 %{_datadir}/%{name}/settings/azothrosenthalsettings.xml
  
@@ -813,6 +822,11 @@ desktop-file-install                                    \
 %_libdir/%{name}/plugins/*%{name}_poshuku_onlinebookmarks.so
 %_datadir/%{name}/settings/poshukuonlinebookmarkssettings.xml
 %_datadir/%{name}/translations/%{name}_poshuku_onlinebookmarks*.qm
+
+%files poshuku-keywords
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_poshuku_keywords.so
+%{_datadir}/%{name}/settings/poshukukeywordssettings.xml
 
 %files secman
 %defattr(-,root,root,-)
