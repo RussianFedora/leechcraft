@@ -287,14 +287,6 @@ Online bookmarks plugin for LeechCraft.
 This package contains a plugin for the Poshuku web browser that allows
 to synchronize bookmarks with services like Read It Later.
 
-%package poshuku-pintab
-Summary:        LeechCraft Pintab Module
-Requires:       %{name}-poshuku = %{version}
-  
-%description poshuku-pintab
-Poshuku PinTab allows to pin selected Poshuku tabs so that they cannot be
-closed until unpinned.
-
 %package poshuku-keywords
 Summary:        Support of url keywords for LeechCraft Poshuku browser
 Requires:       %{name}-poshuku = %{version}
@@ -997,7 +989,7 @@ desktop-file-install                                    \
 
 %changelog
 * Mon Jul 25 2011 Minh Ngo <nlminhtl@gmail.com> 0.4.85
-- new packages: tabslist, glance, poshuku-pintab, azoth-modnok,
+- new packages: tabslist, glance, azoth-modnok,
 - azoth-metacontacts, azoth-lastseen, azoth-adiumstyles,
 - azoth-autoidler
 * Mon Jul 04 2011 Minh Ngo <nlminhtl@gmail.com> - 0.4.80-0.1
