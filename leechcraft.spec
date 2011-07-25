@@ -677,6 +677,7 @@ desktop-file-install                                    \
 %{_libdir}/%{name}/plugins/*%{name}_advancednotifications.so
 %{_datadir}/%{name}/qml/visualnotificationsview.qml
 %{_datadir}/%{name}/translations/leechcraft_advancednotifications*
+%{_datadir}/%{name}/settings/advancednotificationssettings.xml
 
 %if 0%{?fedora} >= 15
 %files  bittorrent
