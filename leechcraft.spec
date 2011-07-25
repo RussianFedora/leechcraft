@@ -1,6 +1,6 @@
 Name:           leechcraft 
 Summary:        A free open source cross-platform modular internet-client 
-Version:        0.4.80
+Version:        0.4.85
 Release:        0.1%{?dist}.R
 License:        GPLv2+
 Group:          Applications/Internet
@@ -11,24 +11,39 @@ Source1:        %{name}.desktop
 Requires:       %{name}-iconset
 
 BuildRequires:  cmake
-BuildRequires:  libcurl-devel
-BuildRequires:  phonon-devel
 BuildRequires:  openssl-devel
 BuildRequires:  boost-devel 
 BuildRequires:  qt4-devel
 BuildRequires:  qt-webkit-devel
-BuildRequires:  qjson-devel
-BuildRequires:  qscintilla-devel
-BuildRequires:  GeoIP-devel 
 BuildRequires:  bzip2-devel
-BuildRequires:  qxmpp >= 0.3.44
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-%if 0%{?fedora} == 15
+BuildRequires:  oxygen-icon-theme
+BuildRequires:  gettext-devel
+
+#LCFTP
+BuildRequires:  libcurl-devel
+
+#Poshuku dependencies
+BuildRequires:  qjson-devel
+
+#LMP dependencies
+BuildRequires:  phonon-devel
+
+#Popishu dependencies
+BuildRequires:  qscintilla-devel
+
+#BitTorrent dependencies
+%if 0%{?fedora} >= 15
 BuildRequires:  rb_libtorrent-devel >= 0.15.6
 %endif
-BuildRequires:  gettext-devel
+
+#Azoth dependencies
+BuildRequires:  aspell-devel
 BuildRequires:  speex-devel
+BuildRequires:  qxmpp >= 0.3.45.1
+BuildRequires:  GeoIP-devel 
+BuildRequires:  qca2-devel
 
 %description
 Core executable of Leechcraft
@@ -272,6 +287,14 @@ Online bookmarks plugin for LeechCraft.
 This package contains a plugin for the Poshuku web browser that allows
 to synchronize bookmarks with services like Read It Later.
 
+%package poshuku-pintab
+Summary:        LeechCraft Pintab Module
+Requires:       %{name}-poshuku = %{version}
+  
+%description poshuku-pintab
+Poshuku PinTab allows to pin selected Poshuku tabs so that they cannot be
+closed until unpinned.
+
 %package poshuku-keywords
 Summary:        Support of url keywords for LeechCraft Poshuku browser
 Requires:       %{name}-poshuku = %{version}
@@ -406,71 +429,113 @@ This package contains a plugin for customizing conference highlights
 for LeechCraft Azoth Module.
  
 %package azoth-juick
-Summary:         Juick.com service for LeechCraft Azoth Module
-Requires:        %{name}-azoth = %{version}
+Summary:        Juick.com service for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
  
 %description azoth-juick
 This package contains a plugin for the juick.com microblogging service
 for LeechCraft Azoth Module.
  
 %package azoth-nativeemoticons
-Summary:         Emoticons packs for LeechCraft Azoth Module
-Requires:        %{name}-azoth = %{version}
+Summary:        Emoticons packs for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
  
 %description azoth-nativeemoticons
 This package contains a plugin for supporting emoticons packs in LeechCraft
 Azoth Module.
  
 %package azoth-p100q
-Summary:         Psto.net service for LeechCraft Azoth Module
-Requires:        %{name}-azoth = %{version}
+Summary:        Psto.net service for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
  
 %description azoth-p100q
 This package contains a plugin for the psto.net microblogging service
 for LeechCraft Azoth Module.
  
 %package azoth-standardstyles
-Summary:         Standard styles for LeechCraft Azoth Module
-Requires:        %{name}-azoth = %{version}
+Summary:        Standard styles for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
  
 %description azoth-standardstyles
 This package provides standard styles for LeechCraft Azoth Module.
  
 %package azoth-xoox
-Summary:         XMPP support for LeechCraft Azoth Module
-Requires:        %{name}-azoth = %{version}
+Summary:        XMPP support for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
  
 %description azoth-xoox
 This package contains a XMPP support for LeechCraft Azoth Module.
  
 %package azoth-xtazy
-Summary:         Publishing current user tune for LeechCraft Azoth Module
-Requires:        %{name}-azoth = %{version}
+Summary:        Publishing current user tune for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
  
 %description azoth-xtazy
 This package contains a plugin for publishing current user tune for
 LeechCraft Azoth Module.
-
+ 
 %package azoth-depester
-Summary:         LeechCraft Azoth Module for ignoring unwanted participants
-Requires:        %{name}-azoth = %{version}
+Summary:        LeechCraft Azoth Module for ignoring unwanted participants
+Requires:       %{name}-azoth = %{version}
  
 %description azoth-depester
 This package contains LeechCraft Azoth Module for ignoring unwanted participants.
  
 %package azoth-herbicide
-Summary:         Antispam plugin for LeechCraft Azoth Module
-Requires:        %{name}-azoth = %{version}
+Summary:        Antispam plugin for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
  
 %description azoth-herbicide
 This package contains a basic antispam plugin for LeechCraft Azoth Module.
  
 %package azoth-rosenthal
-Summary:         Spell checker plugin for LeechCraft Azoth Module
-Requires:        %{name}-azoth = %{version}
+Summary:        Spell checker plugin for LeechCraft Azoth Module
+Requires:       %{name}-azoth = %{version}
  
 %description azoth-rosenthal
 This package contains  a spell checker plugin for LeechCraft Azoth Module
+ 
+%package azoth-lastseen
+Summary:        Client-side recording of contacts' last online
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-lastseen
+Azoth LastSeen for client-side recording of contacts' last online and
+availability time. It doesn't depend on the concrete protocol implementation.
+ 
+%package azoth-adiumstyles
+Summary:        Adium styles for Leechcraft Azoth
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-adiumstyles
+Azoth AdiumStyles for, well, support for Adium styles. It is still
+experimental and quite basic, but, nevertheless, already usable.
+ 
+%package azoth-autoidler
+Summary:        Automatic change of status due to inactivity period
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-autoidler
+Azoth Autoidler for automatic change of status due to inactivity period.
+ 
+%package azoth-metacontacts
+Summary:        Metacontacts for Leechcraft Azoth
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-metacontacts
+Metacontacts for Leechcraft Azoth.
+ 
+%package azoth-modnok
+Summary:        LaTeX support for LeechCraft Azoth
+Requires:       %{name}-azoth = %{version}
+ 
+%description azoth-modnok
+Azoth Modnok for inline in-chat LaTeX rendering and display. It doesn't
+depend on the underlying protocol, and if the protocol supports rich text
+formatting in outgoing messages, it is able to replace the formulas with
+corresponding images in outgoing messages as well, so your buddies would
+see nice rendered formulas instead of raw LaTeX code, even if their client
+doesn't have a LaTeX formatter.
  
 %package iconset-oxygen
 Summary:        LeechCraft Oxygen Iconset
@@ -496,7 +561,7 @@ Iconset based on the Tango project for LeechCraft.
  
 This package contains mapping to the Tango project icons.
 
-%if 0%{?fedora} == 15
+%if 0%{?fedora} >= 15
 %package bittorrent
 Summary:    BitTorrent, the BitTorrent client
 Requires:   %{name} = %{version}
@@ -521,7 +586,23 @@ Summary:        LeechCraft DC++ Module
 Requires:       %{name} = %{version}
 
 %description advancednotifications
-Advanced Notifications module for more customizable notifications for Leechcraft
+Advanced Notifications module for more customizable notifications for
+Leechcraft.
+
+%package glance
+Summary:        Glance feature moved from the Core to a separate plugin
+Requires:       %{name} = %{version}
+ 
+%description glance
+%{summary}.
+ 
+%package tabslist
+Summary:        TabsList for LeechCraft Internet Client
+Requires:       %{name} = %{version}
+ 
+%description tabslist
+TabsList for showing the list of currently opened tabs and quickly selecting
+one of them.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -542,6 +623,8 @@ cd build
   -DENABLE_POPISHU=True \
   -DENABLE_AZOTH=True \
   -DENABLE_EISKALTDCPP=True \
+  -DENABLE_GLANCE=True \
+  -DENABLE_TABSLIST=True \
   -DENABLE_ADVANCEDNOTIFICATIONS=True \
   ../src  
 
@@ -551,6 +634,7 @@ make %{?_smp_mflags}
 cd build
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
+rm -f ${RPM_BUILD_ROOT}{_datadir}/icons/oxygen/32x32/actions/.directory
 desktop-file-install                                    \
   --dir=${RPM_BUILD_ROOT}%{_datadir}/applications         \
   %{SOURCE1}
@@ -563,37 +647,47 @@ desktop-file-install                                    \
 
 %files
 %defattr(-,root,root,-)
-%doc README COPYING
-%_bindir/%{name}
-%_bindir/%{name}-add-file
-%_datadir/%{name}/settings/coresettings.xml
-%doc %_datadir/man/man1/%{name}.1.gz
-%_datadir/applications/%{name}.desktop
-%_datadir/icons/hicolor/*/*/*
-%_datadir/icons/Pevzi
-%dir %_datadir/%{name}/icons
-%dir %_libdir/%{name}
-%dir %_libdir/%{name}/plugins
-%dir %_datadir/%{name}
-%dir %_datadir/%{name}/settings
-%dir %_datadir/%{name}/translations
-%_datadir/%{name}/icons/Pevzi.mapping
-%dir %_datadir/%{name}/installed
-%_datadir/%{name}/translations/leechcraft_??.qm
-%_datadir/%{name}/translations/leechcraft_??_??.qm
-%_libdir/*plugininterface.so.*
-%_libdir/*xmlsettingsdialog.so.*
+%doc README COPYING INSTALL
+%{_bindir}/%{name}
+%{_bindir}/%{name}-add-file
+%{_datadir}/%{name}/settings/coresettings.xml
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/*/*
+%dir %{_datadir}/icons/hicolor/14x14
+%dir %{_datadir}/icons/hicolor/14x14/apps
+%{_datadir}/icons/Pevzi
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/icons
+%{_datadir}/%{name}/icons/Pevzi.mapping
+%dir %{_datadir}/%{name}/installed
+%dir %{_datadir}/%{name}/settings
+%dir %{_datadir}/%{name}/translations
+%dir %{_datadir}/%{name}/scripts
+%dir %{_datadir}/%{name}/qml
+%{_datadir}/%{name}/translations/leechcraft_??.qm
+%{_datadir}/%{name}/translations/leechcraft_??_??.qm
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/plugins
+%{_libdir}/*lcutil.so.*
+%{_libdir}/*xmlsettingsdialog.so.*
+%doc %{_mandir}/man1/%{name}.1.gz
 
-%if 0%{?fedora} == 15
+%files advancednotifications
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_advancednotifications.so
+%{_datadir}/%{name}/qml/visualnotificationsview.qml
+%{_datadir}/%{name}/translations/leechcraft_advancednotifications*
+
+%if 0%{?fedora} >= 15
 %files  bittorrent
 %defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_bittorrent.so
 %{_datadir}/%{name}/settings/torrentsettings.xml
 %{_datadir}/%{name}/translations/%{name}_bittorrent_*.qm
 %endif
-
+ 
 %files  eiskaltdcpp
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{_datadir}/%{name}/eiskaltdcpp
 %dir %{_datadir}/%{name}/translations/??
 %dir %{_datadir}/%{name}/translations/??/LC_MESSAGES
@@ -611,21 +705,22 @@ desktop-file-install                                    \
 %lang(uk) %{_datadir}/%{name}/translations/uk/LC_MESSAGES/libeiskaltdcpp.mo
 %{_libdir}/%{name}/plugins/*%{name}_eiskaltdcpp.so
 %doc %{_mandir}/man1/eiskaltdcpp-qt.1.gz
-
-%files poshuku-pintab
-%defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*_poshuku_pintab.so
-
+ 
 %files aggregator
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_aggregator.so
-%_datadir/%{name}/translations/%{name}_aggregator*.qm
-%_datadir/%{name}/settings/aggregatorsettings.xml
-
+%{_datadir}/%{name}/settings/aggregatorsettings.xml
+%{_datadir}/%{name}/translations/%{name}_aggregator*.qm
+%{_libdir}/%{name}/plugins/*%{name}_aggregator.so
+%{_datadir}/%{name}/scripts/aggregator/
+ 
+%files aggregator-bodyfetch
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_aggregator_bodyfetch.so
+ 
 %files auscrie
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/lib%{name}_auscrie.so
-%_datadir/%{name}/translations/%{name}_auscrie_*.qm
+%{_datadir}/%{name}/translations/%{name}_auscrie_*.qm
+%{_libdir}/%{name}/plugins/lib%{name}_auscrie.so
  
 %files azoth
 %defattr(-,root,root,-)
@@ -689,7 +784,7 @@ desktop-file-install                                    \
 %{_datadir}/%{name}/settings/azothxtazysettings.xml
 %{_libdir}/%{name}/plugins/*%{name}_azoth_xtazy.so
 %{_datadir}/%{name}/translations/%{name}_azoth_xtazy*
-
+ 
 %files azoth-depester
 %defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_azoth_depester.so
@@ -707,168 +802,203 @@ desktop-file-install                                    \
 %{_datadir}/%{name}/translations/%{name}_azoth_rosenthal*
 %{_datadir}/%{name}/settings/azothrosenthalsettings.xml
  
+%files azoth-adiumstyles
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_adiumstyles*
+ 
+%files azoth-autoidler
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_autoidler*
+%{_datadir}/%{name}/settings/azothautoidlersettings.xml
+%{_datadir}/%{name}/translations/leechcraft_azoth_autoidler*
+ 
+%files azoth-lastseen
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_lastseen*
+%{_datadir}/%{name}/translations/leechcraft_azoth_lastseen*
+ 
+%files azoth-metacontacts
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_metacontacts*
+%{_datadir}/%{name}/translations/%{name}_azoth_metacontacts*
+ 
+%files azoth-modnok
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_azoth_modnok*
+%{_datadir}/%{name}/settings/azothmodnoksettings.xml
+%{_datadir}/%{name}/translations/leechcraft_azoth_modnok*
+%{_bindir}/lc_azoth_modnok_latexconvert.sh
+ 
 %files cstp
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*leechcraft_cstp.so
-%_datadir/%{name}/translations/leechcraft_cstp*.qm
-%_datadir/%{name}/settings/cstpsettings.xml
-
+%{_datadir}/%{name}/settings/cstpsettings.xml
+%{_datadir}/%{name}/translations/leechcraft_cstp*.qm
+%{_libdir}/%{name}/plugins/*leechcraft_cstp.so
+ 
 %files dbusmanager
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*leechcraft_dbusmanager.so
-%_datadir/%{name}/translations/leechcraft_dbusmanager*.qm
-%_datadir/%{name}/settings/dbusmanagersettings.xml
-
+%{_datadir}/%{name}/translations/leechcraft_dbusmanager*.qm
+%{_libdir}/%{name}/plugins/*leechcraft_dbusmanager.so
+%{_datadir}/%{name}/settings/dbusmanagersettings.xml
+ 
 %files deadlyrics
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_deadlyrics.so
-%_datadir/%{name}/translations/%{name}_deadlyrics*.qm
-%_datadir/%{name}/settings/deadlyricssettings.xml
-
+%{_datadir}/%{name}/settings/deadlyricssettings.xml
+%{_datadir}/%{name}/translations/%{name}_deadlyrics*.qm
+%{_libdir}/%{name}/plugins/*%{name}_deadlyrics.so
+ 
 %files devel
 %defattr(-,root,root,-)
-%{_includedir}/%{name}/
-%_datadir/%{name}/cmake
-%_libdir/*plugininterface.so
-%_libdir/*xmlsettingsdialog.so
-
+%{_datadir}/%{name}/cmake
+%{_includedir}/%{name}
+%{_libdir}/*lcutil.so
+%{_libdir}/*xmlsettingsdialog.so
+ 
 %files historyholder
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*leechcraft_historyholder.so
-%_datadir/%{name}/translations/leechcraft_historyholder*.qm
-
+%{_libdir}/%{name}/plugins/*leechcraft_historyholder.so
+%{_datadir}/%{name}/translations/leechcraft_historyholder*.qm
+ 
 %files iconset-oxygen
 %defattr(-,root,root,-)
-%_datadir/icons/oxygen/
-%_datadir/%{name}/icons/oxygen.mapping
-
+%{_datadir}/icons/oxygen/*/*/*
+%{_datadir}/%{name}/icons/oxygen.mapping
+ 
 %files iconset-tango
 %defattr(-,root,root,-)
-%_datadir/%{name}/icons/Tango.mapping
-
+%{_datadir}/%{name}/icons/Tango.mapping
+ 
 %files kinotify
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_kinotify.so
-%_datadir/%{name}/kinotify/
-%_datadir/%{name}/settings/kinotifysettings.xml
-
-%files lcftp
-%defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_lcftp.so
-%_datadir/%{name}/translations/%{name}_lcftp*.qm
-%_datadir/%{name}/settings/lcftpsettings.xml
-
+%{_datadir}/%{name}/kinotify
+%{_datadir}/%{name}/settings/kinotifysettings.xml
+%{_libdir}/%{name}/plugins/*%{name}_kinotify.so
+ 
 %files lmp
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_lmp.so
-%_datadir/%{name}/translations/%{name}_lmp*
-%_datadir/%{name}/settings/lmpsettings.xml
-
+%{_datadir}/%{name}/settings/lmpsettings.xml
+%{_datadir}/%{name}/translations/%{name}_lmp*
+%{_libdir}/%{name}/plugins/*%{name}_lmp.so
+ 
 %files networkmonitor
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_networkmonitor.so
-%_datadir/%{name}/translations/%{name}_networkmonitor*.qm
-
+%{_datadir}/%{name}/translations/%{name}_networkmonitor*.qm
+%{_libdir}/%{name}/plugins/*%{name}_networkmonitor.so
+ 
 %files newlife
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_newlife.so
-%_datadir/%{name}/translations/%{name}_newlife*.qm
-
+%{_datadir}/%{name}/translations/%{name}_newlife*.qm
+%{_libdir}/%{name}/plugins/*%{name}_newlife.so
+ 
 %files poshuku-cleanweb
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_poshuku_cleanweb.so
-%_datadir/%{name}/translations/%{name}_poshuku_cleanweb*.qm
-%_datadir/%{name}/settings/poshukucleanwebsettings.xml
-
+%{_datadir}/%{name}/settings/poshukucleanwebsettings.xml
+%{_datadir}/%{name}/translations/%{name}_poshuku_cleanweb*.qm
+%{_libdir}/%{name}/plugins/*%{name}_poshuku_cleanweb.so
+ 
 %files poshuku-filescheme
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_poshuku_filescheme.so
-%_datadir/%{name}/translations/%{name}_poshuku_filescheme_*.qm
-
-%files poshuku-fua
+%{_datadir}/%{name}/translations/%{name}_poshuku_filescheme_*.qm
+%{_libdir}/%{name}/plugins/*%{name}_poshuku_filescheme.so
+ 
+%files poshuku-pintab
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_poshuku_fua.so
-%_datadir/%{name}/translations/%{name}_poshuku_fua*.qm
-%_datadir/%{name}/settings/poshukufuasettings.xml
-
-%files popishu
-%defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_popishu.so
-%_datadir/%{name}/translations/%{name}_popishu_*.qm
-%_datadir/%{name}/settings/popishusettings.xml
-
-%files poshuku
-%defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_poshuku.so
-%_datadir/%{name}/settings/poshukusettings.xml
-%_datadir/%{name}/installed/poshuku/
-%_datadir/%{name}/translations/%{name}_poshuku_??.qm
-%_datadir/%{name}/translations/%{name}_poshuku_??_??.qm
-
-%files poshuku-fatape
-%defattr(-,root,root,-)
-%_datadir/%{name}/settings/poshukufatapesettings.xml
-%_libdir/%{name}/plugins/*%{name}_poshuku_fatape.so
-%_datadir/%{name}/translations/leechcraft_poshuku_fatape*
-
-%files poshuku-wyfv
-%defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_poshuku_wyfv.so
-%_datadir/%{name}/translations/%{name}_poshuku_wyfv*.qm
-%_datadir/%{name}/settings/poshukuwyfvsettings.xml
-
-%files poshuku-onlinebookmarks
-%defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_poshuku_onlinebookmarks.so
-%_datadir/%{name}/settings/poshukuonlinebookmarkssettings.xml
-%_datadir/%{name}/translations/%{name}_poshuku_onlinebookmarks*.qm
-
+%_libdir/%{name}/plugins/*_poshuku_pintab.so
+ 
 %files poshuku-keywords
 %defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_poshuku_keywords.so
 %{_datadir}/%{name}/settings/poshukukeywordssettings.xml
-
+ 
+%files poshuku-fua
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/settings/poshukufuasettings.xml
+%{_datadir}/%{name}/translations/%{name}_poshuku_fua*.qm
+%{_libdir}/%{name}/plugins/*%{name}_poshuku_fua.so
+ 
+%files popishu
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/settings/popishusettings.xml
+%{_datadir}/%{name}/translations/%{name}_popishu_*.qm
+%{_libdir}/%{name}/plugins/*%{name}_popishu.so
+ 
+%files poshuku
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/installed/poshuku/
+%{_datadir}/%{name}/settings/poshukusettings.xml
+%{_datadir}/%{name}/translations/%{name}_poshuku_??.qm
+%{_datadir}/%{name}/translations/%{name}_poshuku_??_??.qm
+%{_libdir}/%{name}/plugins/*%{name}_poshuku.so
+ 
+%files poshuku-fatape
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/settings/poshukufatapesettings.xml
+%{_libdir}/%{name}/plugins/*%{name}_poshuku_fatape.so
+%{_datadir}/%{name}/translations/leechcraft_poshuku_fatape_*.qm
+ 
+%files poshuku-wyfv
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/settings/poshukuwyfvsettings.xml
+%{_datadir}/%{name}/translations/%{name}_poshuku_wyfv*.qm
+%{_libdir}/%{name}/plugins/*%{name}_poshuku_wyfv.so
+ 
+%files poshuku-onlinebookmarks
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/settings/poshukuonlinebookmarkssettings.xml
+%{_datadir}/%{name}/translations/%{name}_poshuku_onlinebookmarks*.qm
+%{_libdir}/%{name}/plugins/*%{name}_poshuku_onlinebookmarks.so
+ 
 %files secman
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_secman.so
-
+%{_libdir}/%{name}/plugins/*%{name}_secman.so
+ 
 %files secman-simplestorage
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_secman_simplestorage.so
-
+%{_libdir}/%{name}/plugins/*%{name}_secman_simplestorage.so
+ 
 %files seekthru
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_seekthru.so
-%_datadir/%{name}/translations/%{name}_seekthru*.qm
-%_datadir/%{name}/settings/seekthrusettings.xml
-
+%{_datadir}/%{name}/settings/seekthrusettings.xml
+%{_datadir}/%{name}/translations/%{name}_seekthru*.qm
+%{_libdir}/%{name}/plugins/*%{name}_seekthru.so
+ 
 %files shellopen
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_shellopen.so
-%_datadir/%{name}/translations/%{name}_shellopen*.qm
-
+%{_datadir}/%{name}/translations/%{name}_shellopen*.qm
+%{_libdir}/%{name}/plugins/*%{name}_shellopen.so
+ 
 %files summary
-%defattr(-,root,root,-) 
-%_libdir/%{name}/plugins/*%{name}_summary.so 
-%_datadir/%{name}/translations/%{name}_summary*.qm
-
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/translations/%{name}_summary*.qm
+%{_libdir}/%{name}/plugins/*%{name}_summary.so
+ 
 %files tabpp
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_tabpp.so
-%_datadir/%{name}/translations/%{name}_tabpp_*.qm
-%_datadir/%{name}/settings/tabppsettings.xml
-
+%{_datadir}/%{name}/settings/tabppsettings.xml
+%{_datadir}/%{name}/translations/%{name}_tabpp_*.qm
+%{_libdir}/%{name}/plugins/*%{name}_tabpp.so
+ 
 %files vgrabber
 %defattr(-,root,root,-)
-%_libdir/%{name}/plugins/*%{name}_vgrabber.so
-%_datadir/%{name}/translations/%{name}_vgrabber*.qm
-%_datadir/%{name}/settings/vgrabbersettings.xml
-
-%files advancednotifications
-%defattr(-,root,root)
-%{_libdir}/%{name}/plugins/*%{name}_advancednotifications.so
+%{_datadir}/%{name}/settings/vgrabbersettings.xml
+%{_datadir}/%{name}/translations/%{name}_vgrabber*.qm
+%{_libdir}/%{name}/plugins/*%{name}_vgrabber.so
+ 
+%files glance
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_glance.so
+%{_datadir}/%{name}/translations/leechcraft_glance*
+ 
+%files tabslist
+%defattr(-,root,root,-)
+%{_libdir}/%{name}/plugins/*%{name}_tabslist.so
+%{_datadir}/%{name}/translations/leechcraft_tabslist*
 
 %changelog
+* Mon Jul 25 2011 Minh Ngo <nlminhtl@gmail.com> 0.4.85
+- new packages: tabslist, glance, poshuku-pintab, azoth-modnok,
+- azoth-metacontacts, azoth-lastseen, azoth-adiumstyles,
+- azoth-autoidler
 * Mon Jul 04 2011 Minh Ngo <nlminhtl@gmail.com> - 0.4.80-0.1
 - 0.4.80 release
 - azoth depester plugin
