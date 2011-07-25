@@ -5,7 +5,7 @@ Release:        0.1%{?dist}.R
 License:        GPLv2+
 Group:          Applications/Internet
 Url:            http://leechcraft.org
-Source:         http://netcologne.dl.sourceforge.net/project/%{name}/LeechCraft/%{version}/%{name}-%{version}.tar.bz2
+Source:         http://aarnet.dl.sourceforge.net/project/%{name}/LeechCraft/%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}.desktop
 
 Requires:       %{name}-iconset
