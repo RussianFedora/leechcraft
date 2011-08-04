@@ -1,0 +1,11 @@
+--- src/plugins/azoth/plugins/xoox/cmake/FindQXmpp.cmake	2011-07-22 17:05:39.000000000 +0300
++++ src/plugins/azoth/plugins/xoox/cmake/FindQXmpp.cmake	2011-07-30 19:46:35.958176068 +0300
+@@ -13,7 +13,7 @@
+ IF(QXMPP_LOCAL)
+ 	FIND_PATH(QXMPP_INCLUDE_DIR QXmppClient.h "${QXMPP_LOCAL}/src")
+ 	IF(QXMPP_INCLUDE_DIR)
+-		SET(QXMPP_LIBRARIES "${QXMPP_LOCAL}/lib/libqxmpp.a")
++		SET(QXMPP_LIBRARIES "${QXMPP_LOCAL}/lib/libqxmpp.so")
+ 	ENDIF(QXMPP_INCLUDE_DIR)
+ ENDIF(QXMPP_LOCAL)
+ 

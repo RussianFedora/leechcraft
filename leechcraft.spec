@@ -1,13 +1,14 @@
 Name:           leechcraft 
-Summary:        A free open source cross-platform modular internet-client 
+Summary:        A Free Open Source Cross-Platform Modular Internet-Client 
 Version:        0.4.85
 Release:        0.1%{?dist}.R
 License:        GPLv2+
 Group:          Applications/Internet
 Url:            http://leechcraft.org
-Source:         http://aarnet.dl.sourceforge.net/project/%{name}/LeechCraft/%{version}/%{name}-%{version}.tar.bz2
+Source0:        http://aarnet.dl.sourceforge.net/project/%{name}/LeechCraft/%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}.desktop
-
+Patch0:         qxmpp.patch
+Patch1:         find_qxmpp.patch
 Requires:       %{name}-iconset
 
 BuildRequires:  cmake
@@ -41,7 +42,7 @@ BuildRequires:  rb_libtorrent-devel >= 0.15.6
 #Azoth dependencies
 BuildRequires:  aspell-devel
 BuildRequires:  speex-devel
-BuildRequires:  qxmpp >= 0.3.45.1
+BuildRequires:  qxmpp-devel >= 0.3.45.1
 BuildRequires:  GeoIP-devel 
 BuildRequires:  qca2-devel
 
@@ -62,7 +63,7 @@ all the plugins with each other, routes requests between them, tracks
 dependencies and performs several other housekeeping tasks.
 
 %package devel
-Summary:    Leechcraft
+Summary:    Leechcraft Development Files
 Requires:   %{name} = %{version}
 Group:      Development/Libraries
 
@@ -382,14 +383,14 @@ IM client for LeechCraft.
 This package contains a simple IM client for LeechCraft.
  
 %package azoth-acetamine
-Summary:        IRC support for LeechCraft Azoth Module
+Summary:        IRC Support for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-acetamine
 This package contains a IRC support for LeechCraft Azoth Module.
  
 %package azoth-chathistory
-Summary:        Chat history for LeechCraft Azoth Module
+Summary:        Chat History for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-chathistory
@@ -405,7 +406,7 @@ This package contains an autopaste for automatic pasting of long
 messages to pastebins
  
 %package azoth-embedmedia
-Summary:        Media objects for LeechCraft Azoth Module
+Summary:        Media Objects for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-embedmedia
@@ -413,7 +414,7 @@ This package enables embedding different media objects in chat
 tab for LeechCraft Azoth Module.
  
 %package azoth-hili
-Summary:        Conference highlights for LeechCraft Azoth Module
+Summary:        Conference Highlights for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-hili
@@ -421,7 +422,7 @@ This package contains a plugin for customizing conference highlights
 for LeechCraft Azoth Module.
  
 %package azoth-juick
-Summary:        Juick.com service for LeechCraft Azoth Module
+Summary:        Juick.com Service for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-juick
@@ -429,7 +430,7 @@ This package contains a plugin for the juick.com microblogging service
 for LeechCraft Azoth Module.
  
 %package azoth-nativeemoticons
-Summary:        Emoticons packs for LeechCraft Azoth Module
+Summary:        Emoticons Packs for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-nativeemoticons
@@ -437,7 +438,7 @@ This package contains a plugin for supporting emoticons packs in LeechCraft
 Azoth Module.
  
 %package azoth-p100q
-Summary:        Psto.net service for LeechCraft Azoth Module
+Summary:        Psto.net Service for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-p100q
@@ -445,21 +446,21 @@ This package contains a plugin for the psto.net microblogging service
 for LeechCraft Azoth Module.
  
 %package azoth-standardstyles
-Summary:        Standard styles for LeechCraft Azoth Module
+Summary:        Standard Styles for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-standardstyles
 This package provides standard styles for LeechCraft Azoth Module.
  
 %package azoth-xoox
-Summary:        XMPP support for LeechCraft Azoth Module
+Summary:        XMPP Support for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-xoox
 This package contains a XMPP support for LeechCraft Azoth Module.
  
 %package azoth-xtazy
-Summary:        Publishing current user tune for LeechCraft Azoth Module
+Summary:        Publishing Current User Tune for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-xtazy
@@ -467,28 +468,28 @@ This package contains a plugin for publishing current user tune for
 LeechCraft Azoth Module.
  
 %package azoth-depester
-Summary:        LeechCraft Azoth Module for ignoring unwanted participants
+Summary:        LeechCraft Azoth Module for Ignoring Unwanted Participants
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-depester
 This package contains LeechCraft Azoth Module for ignoring unwanted participants.
  
 %package azoth-herbicide
-Summary:        Antispam plugin for LeechCraft Azoth Module
+Summary:        Antispam Plugin for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-herbicide
 This package contains a basic antispam plugin for LeechCraft Azoth Module.
  
 %package azoth-rosenthal
-Summary:        Spell checker plugin for LeechCraft Azoth Module
+Summary:        Spell Checker Plugin for LeechCraft Azoth Module
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-rosenthal
 This package contains  a spell checker plugin for LeechCraft Azoth Module
  
 %package azoth-lastseen
-Summary:        Client-side recording of contacts' last online
+Summary:        Client-side Recording of Contacts' Last Online
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-lastseen
@@ -496,7 +497,7 @@ Azoth LastSeen for client-side recording of contacts' last online and
 availability time. It doesn't depend on the concrete protocol implementation.
  
 %package azoth-adiumstyles
-Summary:        Adium styles for Leechcraft Azoth
+Summary:        Adium Styles for Leechcraft Azoth
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-adiumstyles
@@ -504,7 +505,7 @@ Azoth AdiumStyles for, well, support for Adium styles. It is still
 experimental and quite basic, but, nevertheless, already usable.
  
 %package azoth-autoidler
-Summary:        Automatic change of status due to inactivity period
+Summary:        Automatic Change of Status due to Inactivity Period
 Requires:       %{name}-azoth = %{version}
  
 %description azoth-autoidler
@@ -582,7 +583,7 @@ Advanced Notifications module for more customizable notifications for
 Leechcraft.
 
 %package glance
-Summary:        Glance feature moved from the Core to a separate plugin
+Summary:        Glance Feature Moved From the Core to a Separate Plugin
 Requires:       %{name} = %{version}
  
 %description glance
@@ -598,7 +599,8 @@ one of them.
 
 %prep
 %setup -q -n %{name}-%{version}
-
+%patch0
+%patch1
 mkdir build 
 
 %build
@@ -798,7 +800,14 @@ desktop-file-install                                    \
 %files azoth-adiumstyles
 %defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_azoth_adiumstyles*
- 
+%{_datadir}/%{name}/azoth/styles/adium/Hacker/Contents/Resources/Footer.html
+%{_datadir}/%{name}/azoth/styles/adium/Kopete/Contents/Resources/Footer.html
+%{_datadir}/%{name}/azoth/styles/adium/Clear/Contents/Resources/Footer.html
+%{_datadir}/%{name}/azoth/styles/adium/Kopete/Contents/Resources/Header.html
+%{_datadir}/%{name}/azoth/styles/adium/Clean/Contents/Resources/Footer.html
+%{_datadir}/%{name}/azoth/styles/adium/Clear/Contents/Resources/Header.html
+%{_datadir}/%{name}/azoth/styles/adium/Clean/Contents/Resources/Header.html
+
 %files azoth-autoidler
 %defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_azoth_autoidler*
