@@ -609,7 +609,7 @@ cd build
 %endif
   -DRESPECTLIB64=True \
   -DENABLE_SECMAN=True \
-  -DENABLE_LCFTP=False \
+  -DENABLE_FTP=False \
   -DENABLE_POPISHU=True \
   -DENABLE_AZOTH=True \
   -DENABLE_EISKALTDCPP=True \
