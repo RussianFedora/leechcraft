@@ -176,17 +176,7 @@ Media previewer for LeechCraft.
 This package contains the LMP, LeechCraft Media Previewer, small and
 dirty media player designed to preview already downloaded files or to
 stream media content live.
- 
-%package lcftp
-Summary:        LeechCraft FTP Module
-Requires:       %{name} = %{version}
- 
-%description lcftp
-FTP client for LeechCraft.
- 
-This package adds FTP support and provides a simple two-panel FTP
-client based on libcurl.
- 
+
 %package networkmonitor
 Summary:        LeechCraft Network Monitor Module
 Requires:       %{name} = %{version}
@@ -619,6 +609,7 @@ cd build
 %endif
   -DRESPECTLIB64=True \
   -DENABLE_SECMAN=True \
+  -DENABLE_LCFTP=False \
   -DENABLE_POPISHU=True \
   -DENABLE_AZOTH=True \
   -DENABLE_EISKALTDCPP=True \
