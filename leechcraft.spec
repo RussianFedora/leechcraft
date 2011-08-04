@@ -624,7 +624,7 @@ make %{?_smp_mflags}
 cd build
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
-rm -f ${RPM_BUILD_ROOT}{_datadir}/icons/oxygen/32x32/actions/.directory
+rm -f ${RPM_BUILD_ROOT}%{_datadir}/icons/oxygen/32x32/actions/.directory
 desktop-file-install                                    \
   --dir=${RPM_BUILD_ROOT}%{_datadir}/applications         \
   %{SOURCE1}
