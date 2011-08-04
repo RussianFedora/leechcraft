@@ -7,8 +7,7 @@ Group:          Applications/Internet
 Url:            http://leechcraft.org
 Source0:        http://aarnet.dl.sourceforge.net/project/%{name}/LeechCraft/%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}.desktop
-Patch0:         qxmpp.patch
-Patch1:         find_qxmpp.patch
+Patch0:         find_qxmpp.patch
 Requires:       %{name}-iconset
 
 BuildRequires:  cmake
@@ -600,7 +599,6 @@ one of them.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0
-%patch1
 mkdir build 
 
 %build
