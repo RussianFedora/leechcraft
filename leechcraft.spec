@@ -1,7 +1,7 @@
 Name:           leechcraft 
 Summary:        A Free Open Source Cross-Platform Modular Internet-Client 
 Version:        0.4.85
-Release:        0.1%{?dist}.R
+Release:        2%{?dist}.R
 License:        GPLv2+
 Group:          Applications/Internet
 Url:            http://leechcraft.org
@@ -997,14 +997,19 @@ desktop-file-install                                    \
 %{_datadir}/%{name}/translations/leechcraft_tabslist*
 
 %changelog
-* Mon Jul 25 2011 Minh Ngo <nlminhtl@gmail.com> 0.4.85
+* Thu Aug 04 2011 Minh Ngo <nlminhtl@gmail.com> 0.4.85-2
+- some patches for dynamic qxmpp libraries
+
+* Mon Jul 25 2011 Minh Ngo <nlminhtl@gmail.com> 0.4.85-1
 - new packages: tabslist, glance, azoth-modnok,
 - azoth-metacontacts, azoth-lastseen, azoth-adiumstyles,
 - azoth-autoidler
+
 * Mon Jul 04 2011 Minh Ngo <nlminhtl@gmail.com> - 0.4.80-0.1
 - 0.4.80 release
 - azoth depester plugin
 - azoth herbicide plugin
 - azoth rosenthal plugin
+
 * Mon Jun 06 2011 Minh Ngo <nlminhtl@gmail.com> - 0.4.75-0.1.gitga29292b
 - initial build 
