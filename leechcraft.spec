@@ -89,7 +89,14 @@ This package contains Aggregator, the RSS/Atom feed reader. It features:
  * exporting feeds to FB2 for further reading on handheld devices.
 
 A web browser plugin is recommended to show the news in a fancy way.
+
+%package aggregator-bodyfetch
+Summary:        LeechCraft Aggregator Bodyfetch Module
+Requires:       %{name}-aggregator = %{version}
  
+%description aggregator-bodyfetch
+Aggregator BodyFetch plugin for automatic fetching of full news bodies
+
 %package auscrie
 Summary:        LeechCraft Auscrie Module
 Requires:       %{name} = %{version}
