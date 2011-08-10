@@ -1,11 +1,12 @@
+%define git_version 234-geac7867
 Name:           leechcraft 
 Summary:        A Free Open Source Cross-Platform Modular Internet-Client 
 Version:        0.4.85
-Release:        2%{?dist}.R
+Release:        3%{?dist}.R
 License:        GPLv2+
 Group:          Applications/Internet
 Url:            http://leechcraft.org
-Source0:        http://aarnet.dl.sourceforge.net/project/%{name}/LeechCraft/%{version}/%{name}-%{version}.tar.bz2
+Source0:        http://aarnet.dl.sourceforge.net/project/%{name}/LeechCraft/%{version}/%{name}-%{version}-%{git_version}.tar.bz2
 Source1:        %{name}.desktop
 Patch0:         find_qxmpp.patch
 Requires:       %{name}-iconset
@@ -594,7 +595,7 @@ TabsList for showing the list of currently opened tabs and quickly selecting
 one of them.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}-%{git_version}
 %patch0
 mkdir build 
 
@@ -603,7 +604,7 @@ cd build
 
 %{cmake} \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DLEECHCRAFT_VERSION="%{version}" \
+  -DLEECHCRAFT_VERSION="%{version}-%{git_version}" \
 %if 0%{?fedora} < 15
   -DENABLE_TORRENT=False \
 %endif
@@ -665,7 +666,6 @@ desktop-file-install                                    \
 %files advancednotifications
 %defattr(-,root,root,-)
 %{_libdir}/%{name}/plugins/*%{name}_advancednotifications.so
-%{_datadir}/%{name}/qml/visualnotificationsview.qml
 %{_datadir}/%{name}/translations/leechcraft_advancednotifications*
 %{_datadir}/%{name}/settings/advancednotificationssettings.xml
 
