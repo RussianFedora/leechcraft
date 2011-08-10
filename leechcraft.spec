@@ -662,7 +662,7 @@ desktop-file-install                                    \
 %{_libdir}/*lcutil.so.*
 %{_libdir}/*xmlsettingsdialog.so.*
 %doc %{_mandir}/man1/%{name}.1.gz
-%{_datadir}/%{name}/sounds/*
+%{_datadir}/%{name}/sounds
 
 
 %files advancednotifications
@@ -670,7 +670,7 @@ desktop-file-install                                    \
 %{_libdir}/%{name}/plugins/*%{name}_advancednotifications.so
 %{_datadir}/%{name}/translations/leechcraft_advancednotifications*
 %{_datadir}/%{name}/settings/advancednotificationssettings.xml
-%{_datadir}/%{name}/qml/advancednotifications/*
+%{_datadir}/%{name}/qml/advancednotifications
 %if 0%{?fedora} >= 15
 %files  bittorrent
 %defattr(-,root,root,-)
