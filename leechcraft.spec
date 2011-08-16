@@ -1,8 +1,8 @@
-%define git_version 234-geac7867
+%define git_version 279-g26b6cba
 Name:           leechcraft 
 Summary:        A Free Open Source Cross-Platform Modular Internet-Client 
 Version:        0.4.85
-Release:        3%{?dist}.R
+Release:        4%{?dist}.R
 License:        GPLv2+
 Group:          Applications/Internet
 Url:            http://leechcraft.org
